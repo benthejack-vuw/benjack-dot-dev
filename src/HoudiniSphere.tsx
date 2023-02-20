@@ -5,9 +5,10 @@ Command: npx gltfjsx@6.1.4 houdini-sphere.gltf --transform
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import {Mesh} from "three";
 
-export function Model(props) {
-  const { nodes, materials } = useGLTF('/houdini-sphere-transformed.glb')
+export const HoudiniSphere = ({...props}) => {
+  const { nodes } = useGLTF('/houdini-sphere-transformed.glb') as unknown as { nodes: { sphere: Mesh, spikes: Mesh } }
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.sphere.geometry} material={nodes.sphere.material} />

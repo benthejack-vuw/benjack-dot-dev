@@ -91,17 +91,13 @@ const Btj = () => {
 
     loadFonts.then(async () => {
       if(!glCanvas.current) return;
-      // if(!halftoneCanvas.current) return;
 
       const shaderCanvas = new GLCanvas(glCanvas.current);
-      // const halftoneGLCanvas = new GLCanvas(halftoneCanvas.current);
 
       const textLayer = textCanvas(512);
       if(!textLayer) return;
 
       const seedTex = await seedTexture(shaderCanvas.gl);
-
-      // const mouseFollower = new GlobalMousePositionListener(0.15);
 
       const bg = rdTextMix(
         textLayer,
@@ -111,16 +107,9 @@ const Btj = () => {
         1024
       );
 
-      // const hfbg = rippleBackground(
-      //   halftoneCanvas.current,
-      //   halftoneGLCanvas.gl,
-      //   mouseFollower
-      // );
-
       let anim: number;
       const render = () => {
         bg.render({ renderToScreen: true });
-        // hfbg.render({ renderToScreen: true });
         anim = requestAnimationFrame(render);
       }
 
@@ -131,7 +120,7 @@ const Btj = () => {
   }, []);
 
   return (
-      <div className="flex w-full h-screen justify-center items-center">
+      <div className="absolute top-0 left-0 flex w-full h-screen justify-center items-center">
         <canvas className="w-[512px] h-[512px]" ref={glCanvas} />
       </div>
 );
