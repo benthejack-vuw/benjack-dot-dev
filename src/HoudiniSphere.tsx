@@ -5,14 +5,32 @@ Command: npx gltfjsx@6.1.4 houdini-sphere.gltf --transform
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
-import {Mesh} from "three";
+import {Group, Mesh} from "three";
+import {useFrame} from "@react-three/fiber";
+import passthroughVert from "./shaders/passthroughVert";
+import sphereSpikesFrag from "./shaders/sphereSpikesFrag";
 
 export const HoudiniSphere = ({...props}) => {
+  const groupRef = useRef<Group>(null);
   const { nodes } = useGLTF('/houdini-sphere-transformed.glb') as unknown as { nodes: { sphere: Mesh, spikes: Mesh } }
+
+  useFrame((state) => {
+    if(!groupRef.current) return;
+
+    const t = state.clock.getElapsedTime();
+    groupRef.current.rotation.y = t / 10.0;
+  })
+
   return (
-    <group {...props} dispose={null}>
+    <group ref={groupRef} {...props} dispose={null}>
       <mesh geometry={nodes.sphere.geometry} material={nodes.sphere.material} />
-      <mesh geometry={nodes.spikes.geometry} material={nodes.spikes.material} />
+      <mesh geometry={nodes.spikes.geometry}>
+        <shaderMaterial
+          fragmentShader={sphereSpikesFrag()}
+          vertexShader={passthroughVert()}
+          transparent
+        />
+      </mesh>
     </group>
   )
 }
