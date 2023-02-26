@@ -20,7 +20,7 @@ const rdMix = () => `
     col = smoothstep(blurStep, blurStep + 0.01, col);
     col = 1.0 - col;
 
-    gl_FragColor =  vec4(col, col, col, 1.0 - col);
+    gl_FragColor =  vec4(vec3(0.7), 1.0 - col);
   }
 
 `;

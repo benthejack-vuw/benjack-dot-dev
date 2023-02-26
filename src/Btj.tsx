@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { ComponentProps, useEffect, useRef } from "react";
 import WebFont from 'webfontloader';
 import {GLCanvas, loadTexture} from "tiny-shader-lib";
 import {rdTextMix} from "./backgrounds/rdTextMix";
@@ -19,26 +19,26 @@ const textCanvas = (size: number) => {
 
   if(!textCtx) return null;
 
-  textCtx.font = '800 150px Raleway';
+  textCtx.font = '800 230px Raleway';
   textCtx.textBaseline = 'middle';
 
   //@ts-ignore
   textCtx.fillStyle = '#FFFFFF';
   textCtx.fillRect(0,0, size, size);
   textCtx.fillStyle = '#000000';
+  textCtx.textAlign = 'center';
 
-  textCtx.textAlign = 'left';
   textCtx.fillText(
     "Ben",
-    50,
-    size/2 - 75,
+    size/2,
+    size/2 - 95,
   );
 
-  textCtx.textAlign = 'right';
+
   textCtx.fillText(
     "Jack",
-    size - 60,
-    size/2 + 75,
+    size/2,
+    size/2 + 95,
   );
 
   return canvas;
@@ -71,9 +71,10 @@ const seedTexture = (gl: WebGLRenderingContext | WebGL2RenderingContext) => {
   return loadTexture(gl, '/images/reactionDiffusion1.jpg');
 }
 
-const Btj = () => {
+type BtjProps = ComponentProps<'div'>;
+
+const Btj = ({...props}: BtjProps) => {
   const glCanvas = useRef<HTMLCanvasElement>(null);
-  const halftoneCanvas = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     let anim: number;
@@ -91,31 +92,18 @@ const Btj = () => {
 
     loadFonts.then(async () => {
       if(!glCanvas.current) return;
-      // if(!halftoneCanvas.current) return;
-
       const shaderCanvas = new GLCanvas(glCanvas.current);
-      // const halftoneGLCanvas = new GLCanvas(halftoneCanvas.current);
-
       const textLayer = textCanvas(512);
       if(!textLayer) return;
 
       const seedTex = await seedTexture(shaderCanvas.gl);
 
-      // const mouseFollower = new GlobalMousePositionListener(0.15);
 
       const bg = rdTextMix(
         textLayer,
         seedTex,
-        shaderCanvas.gl,
-        1024,
-        1024
+        shaderCanvas.gl
       );
-
-      // const hfbg = rippleBackground(
-      //   halftoneCanvas.current,
-      //   halftoneGLCanvas.gl,
-      //   mouseFollower
-      // );
 
       let anim: number;
       const render = () => {
@@ -131,25 +119,14 @@ const Btj = () => {
   }, []);
 
   return (
-    <>
-      {/*<div className="absolute top-0 left-0 w-full h-full p-12 pointer-events-none">*/}
-      {/*  <div className="w-full h-full flex flex-col">*/}
-      {/*    <div className="flex justify-between">*/}
-      {/*      <div className="w-20 h-20 border-t-2 border-l-2 border-black opacity-75"/>*/}
-      {/*    </div>*/}
-      {/*    <div className="flex-1"/>*/}
-      {/*    <div className="flex justify-between flex-row-reverse">*/}
-      {/*      <div className="w-20 h-20 border-b-2 border-r-2 border-black opacity-75"/>*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
-      {/*<div className="absolute top-0 left-0 flex w-full h-full justify-center items-center">*/}
-      {/*  <canvas className="w-full h-full" ref={halftoneCanvas} />*/}
-      {/*</div>*/}
-      <div className="absolute top-0 left-0 flex w-full h-full justify-center items-center">
-        <canvas className="w-[500px] h-[500px]" ref={glCanvas} />
+    <div 
+      {...props}
+    >
+      <div className="flex flex-col">
+        <canvas className="max-w-[100vw] max-h-[100vw] w-[500px] h-[500px]" width={1024} height={1024} ref={glCanvas} />
+        <span className="text-[#b2b2b2] text-4xl font-[Raleway] text-center w-full">Creative web development</span>
       </div>
-    </>
+    </div>
 );
 }
 

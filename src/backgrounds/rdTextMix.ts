@@ -18,6 +18,7 @@ const rdMixPass = (
     blurMap: { type: 'texture2D', value: null },
     dotMap: { type: 'texture2D', value: null },
     gridSize: { type: 'float', value: 200 },
+    
   };
 
   const pass = new ShaderPass(
@@ -80,8 +81,6 @@ export function rdTextMix(
   textCanvas: HTMLCanvasElement,
   seedTexture: WebGLTexture,
   gl: WebGLRenderingContext,
-  width: number,
-  height: number
 ) {
 
   const coverScreen = clipspaceScreenTri(gl);
@@ -93,7 +92,7 @@ export function rdTextMix(
   const imageBlur = imageBlurPass(
     gl,
     coverScreen,
-    30,
+    40,
     Math.floor(512),
     Math.floor(512),
   );

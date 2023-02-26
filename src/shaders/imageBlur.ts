@@ -56,8 +56,8 @@ const imageBlur = () => `
       
       
       
-      float simplex = smoothstep(0.0, 0.2, simplex3d(vec3(uv* 1.8, time)));
-      float mouse = 1.0 - smoothstep(0.0, 0.3, length(mfp - uv));
+      float simplex = smoothstep(0.0, 0.2, simplex3d(vec3(uv* 1.0, time)));
+      float mouse = 1.0 - smoothstep(0.0, 0.6, length(mfp - uv));
       float blurIntensity = clamp(simplex + mouse, 0.0, 1.0);
       
       gl_FragColor = mix(initial, blurred, blurIntensity);

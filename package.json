@@ -5,6 +5,7 @@
   "dependencies": {
     "@react-three/drei": "^9.56.25",
     "@react-three/fiber": "^8.11.2",
+    "@react-three/postprocessing": "^2.7.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -14,6 +15,8 @@
     "@types/react-dom": "^18.0.10",
     "@types/three": "^0.149.0",
     "@types/webfontloader": "^1.6.35",
+    "gltfjsx": "^6.1.4",
+    "gsap": "^3.11.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
