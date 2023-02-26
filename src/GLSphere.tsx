@@ -32,6 +32,10 @@ const GLSphere = ({intensity = 1, lightRadius = 2, animateIn = 0}: GLSphereProps
         animateDna: smoothstep(0.3, 1.0, animateIn),
     }), [animateIn]);
 
+    const spherePosition: [x: number, y: number, z:number] = useMemo(() => (
+        window.innerWidth > 700 ? [1.5, 0, 2] : [0, -1.5, 2] 
+    ), [])
+
     return (
         <div className="fixed w-full h-full top-0 left-0 z-[-1]">
             <Canvas camera={{near: 1, far: -1}} shadows>
@@ -51,8 +55,7 @@ const GLSphere = ({intensity = 1, lightRadius = 2, animateIn = 0}: GLSphereProps
                     intensity={intensity}
                 />
                 <Environment preset="city" />
-
-                <DnaSphere position={[1.5, 0, 2]} speed={0.1} animateIn={animOne.animateIn} animateDna={animOne.animateDna} />
+                <DnaSphere position={spherePosition} speed={0.1} animateIn={animOne.animateIn} animateDna={animOne.animateDna} />
                 <EffectLayers/>
             </Canvas>
         </div>
