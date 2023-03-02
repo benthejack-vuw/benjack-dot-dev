@@ -6,7 +6,7 @@ const dnaSpikeFrag = () => `
     uniform float opacity;
 
     void main() {
-        vec3 col = vec3(0.2);
+        vec3 col = vec3(1);
         gl_FragColor = vec4(col * opacity, (1.0 - interp) * distFromCenter * (opacity));
     }
 `;

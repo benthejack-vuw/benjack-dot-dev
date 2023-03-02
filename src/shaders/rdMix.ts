@@ -5,6 +5,7 @@ const rdMix = () => `
   uniform sampler2D dotMap;
   uniform float gridSize;
   uniform vec2 resolution;
+  uniform vec3 baseColor;
   
   void main() {
     vec2 uv = gl_FragCoord.xy / resolution;
@@ -20,7 +21,7 @@ const rdMix = () => `
     col = smoothstep(blurStep, blurStep + 0.01, col);
     col = 1.0 - col;
 
-    gl_FragColor =  vec4(vec3(0.2), 1.0 - col);
+    gl_FragColor =  vec4(baseColor, 1.0 - col);
   }
 
 `;

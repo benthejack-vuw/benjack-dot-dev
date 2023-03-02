@@ -8,7 +8,6 @@ import {GlobalMousePositionListener} from "../hooks/useGlobalMousePosition";
 
 const rdMixPass = (
   gl: WebGLRenderingContext,
-  textCanvas: HTMLCanvasElement,
   screenGeom: Geometry,
   width?: number,
   height?: number
@@ -18,7 +17,7 @@ const rdMixPass = (
     blurMap: { type: 'texture2D', value: null },
     dotMap: { type: 'texture2D', value: null },
     gridSize: { type: 'float', value: 200 },
-    
+    baseColor: { type: 'float3', value: [0.7,0.7,0.7]}
   };
 
   const pass = new ShaderPass(
@@ -98,7 +97,7 @@ export function rdTextMix(
   );
 
   const rd = rdPass(gl, seedTexture, coverScreen, 1024, 1024);
-  const halftone = rdMixPass(gl, textCanvas, coverScreen, window.innerWidth, window.innerWidth);
+  const halftone = rdMixPass(gl, coverScreen, window.innerWidth, window.innerWidth);
 
   for(let i = 0; i < 50; ++i) {
     rd.render();
@@ -117,13 +116,6 @@ export function rdTextMix(
     imageBlur.blurV.setUniform('time', t);
     imageBlur.blurH.setUniform('time', t);
   });
-
-
-  // rdMix.addUpdateFunction(() => {
-  //   for(let i = 0; i < 50; ++i) {
-  //     rd.render();
-  //   }
-  // })
 
   halftone.setUniform('map', canvTex);
   halftone.linkPassToUniform(rd, 'dotMap');

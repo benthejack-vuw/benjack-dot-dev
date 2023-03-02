@@ -49,7 +49,7 @@ const DnaSphere = ({ opacity = 1.0, speed = 0.5, animateIn = 0, animateDna = 0, 
         receiveShadow
         scale={animateIn}
       >
-        <meshStandardMaterial transparent opacity={opacity} color={[0.25,0.25, 0.25]} metalness={0.0} roughness={1.0}/>
+        <meshStandardMaterial transparent opacity={opacity} color={[0.045,0.045, 0.05]} metalness={0.0} roughness={1.0}/>
       </mesh>
       <DnaPoints animateDna={animateDna} opacity={opacity} />
     </group>
