@@ -7,66 +7,6 @@
 		{
 			"bufferView":0,
 			"componentType":5125,
-			"count":220416,
-			"type":"SCALAR",
-			"min":[0
-			],
-			"max":[73471
-			]
-		},
-		{
-			"bufferView":1,
-			"componentType":5126,
-			"count":73472,
-			"type":"VEC3",
-			"min":[-4.66293812,-4.8905611,-4.86515236
-			],
-			"max":[4.42140007,4.16669655,4.65991545
-			]
-		},
-		{
-			"bufferView":2,
-			"componentType":5126,
-			"count":73472,
-			"type":"SCALAR",
-			"min":[-10.0000019
-			],
-			"max":[-9.99999809
-			]
-		},
-		{
-			"bufferView":3,
-			"componentType":5126,
-			"count":73472,
-			"type":"VEC3",
-			"min":[-0.981101215,-0.984884918,-0.996183217
-			],
-			"max":[0.992981672,0.992215276,0.992183447
-			]
-		},
-		{
-			"bufferView":4,
-			"componentType":5126,
-			"count":73472,
-			"type":"SCALAR",
-			"min":[0
-			],
-			"max":[0.711969495
-			]
-		},
-		{
-			"bufferView":5,
-			"componentType":5126,
-			"count":73472,
-			"type":"SCALAR",
-			"min":[0.505894184
-			],
-			"max":[5.58947563
-			]
-		},
-		{
-			"bufferView":6,
-			"componentType":5125,
 			"count":275388,
 			"type":"SCALAR",
 			"min":[0
@@ -75,7 +15,7 @@
 			]
 		},
 		{
-			"bufferView":7,
+			"bufferView":1,
 			"componentType":5126,
 			"count":76108,
 			"type":"VEC3",
@@ -85,7 +25,7 @@
 			]
 		},
 		{
-			"bufferView":8,
+			"bufferView":2,
 			"componentType":5126,
 			"count":76108,
 			"type":"VEC3",
@@ -98,81 +38,39 @@
 	"buffers":[
 		{
 			"uri":"HoudiniSphereWithPoints_data.bin",
-			"byteLength":6454800,
+			"byteLength":2928144,
 			"name":"main_buffer"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":881664,
-			"target":34963
-		},
-		{
-			"buffer":0,
-			"byteOffset":881664,
-			"byteLength":881664,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteOffset":1763328,
-			"byteLength":293888,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteOffset":2057216,
-			"byteLength":881664,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteOffset":2938880,
-			"byteLength":293888,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteOffset":3232768,
-			"byteLength":293888,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteOffset":3526656,
 			"byteLength":1101552,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteOffset":4628208,
+			"byteOffset":1101552,
 			"byteLength":913296,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteOffset":5541504,
+			"byteOffset":2014848,
 			"byteLength":913296,
 			"target":34962
 		}
 	],
 	"nodes":[
 		{
-			"children":[1,2,3,4,5
-			],
-			"name":"Root"
+			"name":"SphereMesh",
+			"mesh":0
 		},
 		{
 			"name":"base_meshes"
 		},
 		{
-			"name":"DnaStrands",
-			"mesh":0
-		},
-		{
-			"name":"SphereMesh",
-			"mesh":1
+			"name":"DnaStrands"
 		},
 		{
 			"name":"SpherePoints"
@@ -186,25 +84,10 @@
 			"primitives":[
 				{
 					"attributes":{
-						"_interpolation":5,
-						"_near":4,
-						"_offset":3,
-						"_density":2,
+						"NORMAL":2,
 						"POSITION":1
 					},
 					"indices":0
-				}
-			],
-			"name":"DnaStrands"
-		},
-		{
-			"primitives":[
-				{
-					"attributes":{
-						"NORMAL":8,
-						"POSITION":7
-					},
-					"indices":6
 				}
 			],
 			"name":"SphereMesh"

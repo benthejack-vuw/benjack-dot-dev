@@ -10,7 +10,6 @@ export function Model(props) {
   const { nodes, materials } = useGLTF('/HoudiniSphereWithPoints-transformed.glb')
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.DnaStrands.geometry} material={nodes.DnaStrands.material} />
       <mesh geometry={nodes.SphereMesh.geometry} material={nodes.SphereMesh.material} />
     </group>
   )
