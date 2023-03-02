@@ -39,7 +39,7 @@ const GLSphere = ({intensity = 1, lightRadius = 2, animateIn = 0}: GLSphereProps
     return (
         <div className="fixed w-full h-full top-0 left-0 z-[-1]">
             <Canvas camera={{near: 1, far: -1}} shadows>
-                <color attach="background" args={[0.005, 0.005, 0.005]} />
+                <color attach="background" args={[0.95, 0.95, 0.95]} />
                 <ambientLight intensity={intensity / 3} />
                 <spotLight
                     penumbra={1}

@@ -11,7 +11,7 @@ const EffectLayers = () => {
     <EffectComposer>
         <Vignette
             offset={0.1} // vignette offset
-            darkness={1} // vignette darkness
+            darkness={0.4} // vignette darkness
             eskil={false} // Eskil's vignette technique
         />
     </EffectComposer>
