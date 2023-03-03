@@ -1,6 +1,4 @@
 import {clipspaceScreenTri, Geometry, passThroughVert, ShaderChain, ShaderPass, UniformObject, canvasTexture} from "tiny-shader-lib";
-import blurPass from "./passes/blurPass";
-import ripple from "../shaders/ripple";
 import rdMix from "../shaders/rdMix";
 import imageBlurPass from "./passes/imageBlurPass";
 import reactionDiffusion from "../shaders/reactionDiffusion";

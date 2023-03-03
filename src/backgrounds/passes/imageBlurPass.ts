@@ -6,7 +6,6 @@ import {
   UniformObject,
 } from 'tiny-shader-lib';
 
-import { blurFrag } from '../../shaders';
 import imageBlur from "../../shaders/imageBlur";
 
 const imageBlurPass = (

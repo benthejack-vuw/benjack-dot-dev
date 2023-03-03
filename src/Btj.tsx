@@ -2,9 +2,6 @@ import { ComponentProps, useEffect, useRef } from "react";
 import WebFont from 'webfontloader';
 import {GLCanvas, loadTexture} from "tiny-shader-lib";
 import {rdTextMix} from "./backgrounds/rdTextMix";
-import halftoneBackground from "./backgrounds/halftoneBackground";
-import {rippleBackground} from "./backgrounds/rippleBackground";
-import {GlobalMousePositionListener} from "./hooks/useGlobalMousePosition";
 
 const createCanvas = (size: number) => {
   const canvas = document.createElement('canvas');

@@ -14,6 +14,7 @@ const EffectLayers = () => {
             darkness={0.4} // vignette darkness
             eskil={false} // Eskil's vignette technique
         />
+        <Noise opacity={0.01}/>
     </EffectComposer>
     );
 };
